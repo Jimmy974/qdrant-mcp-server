@@ -1,6 +1,6 @@
 # Export tool classes
-from .collection import CollectionTools
 from .vector import VectorTools
 from .point import PointTools
+from .text import TextTools
 
-__all__ = ["CollectionTools", "VectorTools", "PointTools"] 
+__all__ = ["VectorTools", "PointTools", "TextTools"] 

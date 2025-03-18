@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 import logging
 from fastmcp import FastMCP
-from .tools.collection import CollectionTools
 from .tools.vector import VectorTools
 from .tools.point import PointTools
+from .tools.text import TextTools
 
 class QdrantMCPServer:
     def __init__(self):
@@ -23,14 +23,14 @@ class QdrantMCPServer:
     def _register_tools(self):
         """Register all MCP tools."""
         # Initialize tool classes
-        collection_tools = CollectionTools(self.logger)
         vector_tools = VectorTools(self.logger)
         point_tools = PointTools(self.logger)
+        text_tools = TextTools(self.logger)
         
         # Register tools from each module
-        collection_tools.register_tools(self.mcp)
         vector_tools.register_tools(self.mcp)
         point_tools.register_tools(self.mcp)
+        text_tools.register_tools(self.mcp)
 
     def run(self):
         """Run the MCP server."""

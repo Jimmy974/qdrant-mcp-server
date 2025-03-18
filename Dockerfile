@@ -4,6 +4,11 @@ FROM python:3.10-slim
 # Set working directory
 WORKDIR /app
 
+# Install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
 # Copy necessary files
 COPY . .
 
@@ -21,6 +26,9 @@ RUN hatch build && pip install dist/*.whl
 ENV QDRANT_HOST="localhost"
 ENV QDRANT_PORT="6333"
 ENV QDRANT_API_KEY=""
+ENV QDRANT_VERIFY_SSL="True"
+ENV DEFAULT_COLLECTION_NAME="default_collection"
+ENV EMBEDDING_MODEL="BAAI/bge-small-en-v1.5"
 
 # Expose the port the server is running on
 EXPOSE 8000

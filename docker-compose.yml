@@ -29,6 +29,9 @@ services:
       - QDRANT_HOST=qdrant
       - QDRANT_PORT=6333
       - QDRANT_API_KEY=
+      - QDRANT_VERIFY_SSL=True
+      - DEFAULT_COLLECTION_NAME=default_collection
+      - EMBEDDING_MODEL=BAAI/bge-small-en-v1.5
     networks:
       - mcp_network
     depends_on:
